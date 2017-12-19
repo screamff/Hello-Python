@@ -1,6 +1,6 @@
 # Hello-Python
 
-python 版本: 2.7.14
+python 版本: 2.7.13
 
 平台: win7,win10,linux(有树莓派和虚拟服务器，不常用)
 

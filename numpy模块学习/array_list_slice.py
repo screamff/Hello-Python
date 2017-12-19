@@ -8,7 +8,7 @@ print "x.dtype", x.dtype
 y=x[0]
 y[0]=9
 print "y is:", y
-print "x become:\n", x
+print "x becomes\n", x
 
 print "Here is the list------"
 a = [1,2,3,4,5,6]
