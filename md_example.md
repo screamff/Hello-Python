@@ -5,7 +5,7 @@ This is an H2次级标题
 # 这是另一种写法
 #### 本文参考自http://shouce.jb51.net/markdown/#philosophy
 >这里是引用符号开始处
-+ 无序列表示例
++ 这是无序列表示例
 - another
 * 003
 >>嵌套引用在这
@@ -27,6 +27,7 @@ This is an H2次级标题
 2020. 全面建设小康社会
 
 那么，转义即可
+
 2020\. 神奇的一年
 
 - 好的，到这里列表基本讨论完了，第 **32** 行结束
@@ -67,8 +68,7 @@ ________________
 或者俩方括号之间加上空格[example2] [foo]  
 [mark_id]: www.baidu.com (waliewalie)
 [foo]: http://example.com/  "Optional Title Here"
-[foo]: http://example.com/  'Optional Title Here'
-[foo]: http://example.com/  (Optional Title Here)
+
 
 链接内容定义的形式为：
 
