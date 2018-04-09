@@ -3,10 +3,29 @@
 import cv2
 import numpy as np
 import sys
-img = np.zeros((512,512,3),np.uint8)
-approx = np.array([[75,108],[376,77],[387,252],[83,257]])
-approx2 = np.array([[20,10],[40,10],[50,100],[20,60]])
-img2 = cv2.polylines(img,[approx,approx2],True,(120,255,255),5,4)
-cv2.imshow('test',img2)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+import matplotlib.pyplot as plt
+
+if __name__=='__main__':
+    I = cv2.imread(sys.argv[1], 0)
+    cv2.imshow('I',I)
+    r, i = 1, 1
+    max_r, max_i = 20, 20
+    cv2.namedWindow('morphology',1)
+    def nothing(*args):
+        pass
+
+    cv2.createTrackbar('r','morphology',r,max_r,nothing)
+    cv2.createTrackbar('i','morphology',i,max_i,nothing)
+
+    while True:
+        r = cv2.getTrackbarPos('r','morphology')
+        i = cv2.getTrackbarPos('i','morphology')
+
+        s = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(2*r+1,2*r+1))
+        # d = cv2.morphologyEx(I,cv2.MORPH_CLOSE,s,iterations=i)
+        d_2 = cv2.morphologyEx(I,cv2.MORPH_BLACKHAT,s,iterations=i)
+        # cv2.imshow('morphology',d)
+        cv2.imshow('morphology',d_2)
+        if cv2.waitKey(5) == 27:
+            break
+    cv2.destroyAllWindows()
