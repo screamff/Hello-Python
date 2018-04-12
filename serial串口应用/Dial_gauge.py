@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #coding:utf-8
+#某千分测微计的使用
 import serial
 ser = serial.Serial('COM6', 38400, stopbits=serial.STOPBITS_TWO,  timeout=None)
 print ser.portstr
