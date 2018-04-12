@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+#已失效！！！！！！
 import urllib2
 import re
 
