@@ -27,4 +27,3 @@ class Application(Frame):
 
 app = Application()
 app.mainloop()
-root.destroy()
