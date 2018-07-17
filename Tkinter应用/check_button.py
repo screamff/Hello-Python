@@ -30,4 +30,20 @@ numberChosen["values"] = [1, 2, 4, 42, 100]
 numberChosen.grid(column=1, row=1)
 numberChosen.current(1) #选择默认value
 
+#创建3个checkbutton
+chVarDis = tk.IntVar()
+check1 = tk.Checkbutton(win, text="Disabled", variable=chVarDis, state="disabled")
+check1.select()
+check1.grid(column=0, row=2, sticky=tk.W)
+
+chVarUn = tk.IntVar()
+check2 = tk.Checkbutton(win, text="Unchecked", variable=chVarUn)
+check2.deselect()
+check2.grid(column=1, row=2, sticky=tk.W)
+
+chVarEn = tk.IntVar()
+check3 = tk.Checkbutton(win, text="Enabled", variable=chVarEn)
+check3.select()
+check3.grid(column=2, row=2, sticky=tk.W)
+
 win.mainloop()
