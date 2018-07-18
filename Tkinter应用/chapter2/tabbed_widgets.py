@@ -12,9 +12,21 @@ from Tkinter import Menu
 win = tk.Tk()
 win.title("Python gui")
 
+# 创建多页选项卡式窗口
+tabControl = ttk.Notebook(win)
+tab1 = ttk.Frame(tabControl)
+tabControl.add(tab1, text="Tab 1")
+tab2 = ttk.Frame(tabControl)
+tabControl.add(tab2, text="Tab 2")
+tabControl.pack(expand=1, fill="both") # 另一种布局管理器
+
+
 # 创建框架方便布局
-monty = ttk.LabelFrame(win, text=" monty python")
-monty.grid(column=0, row=0)
+monty = ttk.LabelFrame(tab1, text=" monty python ")
+monty.grid(column=0, row=0, padx=8, pady=4)
+
+monty2 = ttk.LabelFrame(tab2, text=" the snake ")
+monty2.grid(column=0, row=0, padx=8, pady=4)
 
 # 按钮回调函数
 def ClickMe():
@@ -22,62 +34,25 @@ def ClickMe():
 
 # 创建按钮
 action = ttk.Button(monty, text="Click Me!", command=ClickMe)
-action.grid(column=2, row=1)
+action.grid(column=2, row=1, padx=8, pady=4)
 
 # 创建标签
-ttk.Label(monty, text="Enter a name:").grid(column=0, row=0)
-ttk.Label(monty, text="Choose a number:").grid(column=1, row=0)
+ttk.Label(monty, text="Enter a name:").grid(column=0, row=0, padx=8, pady=4)
+ttk.Label(monty, text="Choose a number:").grid(column=1, row=0, padx=8, pady=4)
 
 # 创建输入框
 name = tk.StringVar()
 nameEntered = ttk.Entry(monty, width=12, textvariable=name)
 nameEntered.focus() #place a cursor
-nameEntered.grid(column=0, row=1)
+nameEntered.grid(column=0, row=1, padx=8, pady=4)
 
 # 创建下拉菜单
 number = tk.StringVar()
 numberChosen = ttk.Combobox(monty, width=12, textvariable=number)
 # numberChosen = ttl.Combobox(monty, width=12, textvariable=number, state='readonly') # 禁止自己填写
 numberChosen["values"] = [1, 2, 4, 42, 100]
-numberChosen.grid(column=1, row=1)
+numberChosen.grid(column=1, row=1, padx=8, pady=4)
 numberChosen.current(1) #选择默认value
-
-#创建3个checkbutton
-chVarDis = tk.IntVar()
-check1 = tk.Checkbutton(monty, text="Disabled", variable=chVarDis, state="disabled")
-check1.select()
-check1.grid(column=0, row=2, sticky=tk.W)
-
-chVarUn = tk.IntVar()
-check2 = tk.Checkbutton(monty, text="Unchecked", variable=chVarUn)
-check2.deselect()
-check2.grid(column=1, row=2, sticky=tk.W)
-
-chVarEn = tk.IntVar()
-check3 = tk.Checkbutton(monty, text="Enabled", variable=chVarEn)
-check3.select()
-check3.grid(column=2, row=2, sticky=tk.W)
-
-# 使用列表循环改写单选按钮
-colors = ["Blue", "Gold", "Red"]
-
-# 该函数若定义在下个代码块下面则会报错（未定义）,不清楚为什么
-def radCall():
-    radSel = radVar.get()
-    if radSel == 0:
-        monty.configure(background=colors[0])
-    elif radSel == 1:
-        monty.configure(background=colors[1])
-    elif radSel == 2:
-        monty.configure(background=colors[2])
-
-radVar = tk.IntVar()
-radVar.set(99)
-for col in range(3):
-    curRad = "rad" + str(col)
-    curRad = tk.Radiobutton(monty, text=colors[col], variable=radVar, value=col, command=radCall)
-    curRad.grid(column=col, row=3, sticky=tk.W)
-
 
 # 创建滚动文本框，定义长宽
 scrolW = 30
@@ -87,9 +62,46 @@ scr = scrolledtext.ScrolledText(monty, width=scrolW, height=scrolH, wrap=tk.WORD
 # 扩充所占单元格布局，合并3格
 scr.grid(column=0, columnspan=3, sticky="WE")
 
+#创建3个checkbutton
+chVarDis = tk.IntVar()
+check1 = tk.Checkbutton(monty2, text="Disabled", variable=chVarDis, state="disabled")
+check1.select()
+check1.grid(column=0, row=0, sticky=tk.W)
+
+chVarUn = tk.IntVar()
+check2 = tk.Checkbutton(monty2, text="Unchecked", variable=chVarUn)
+check2.deselect()
+check2.grid(column=1, row=0, sticky=tk.W)
+
+chVarEn = tk.IntVar()
+check3 = tk.Checkbutton(monty2, text="Enabled", variable=chVarEn)
+check3.select()
+check3.grid(column=2, row=0, sticky=tk.W)
+
+# 使用列表循环改写单选按钮
+colors = ["Blue", "Gold", "Red"]
+
+# 该函数若定义在下个代码块下面则会报错（未定义）,不清楚为什么
+def radCall():
+    radSel = radVar.get()
+    if radSel == 0:
+        monty2.configure(background=colors[0])
+    elif radSel == 1:
+        monty2.configure(background=colors[1])
+    elif radSel == 2:
+        monty2.configure(background=colors[2])
+
+radVar = tk.IntVar()
+radVar.set(99)
+for col in range(3):
+    curRad = "rad" + str(col)
+    curRad = tk.Radiobutton(monty2, text=colors[col], variable=radVar, value=col, command=radCall)
+    curRad.grid(column=col, row=1, sticky=tk.W)
+
+
 # 建立单独框架,适当扩充边界
-labelFrame = ttk.LabelFrame(win)
-labelFrame.grid(column=0, row=1, padx=20, pady=40)
+labelFrame = ttk.LabelFrame(monty2)
+labelFrame.grid(column=0, row=2, padx=20, pady=40, columnspan=3)
 ttk.Label(labelFrame, text="Label1 make it looooonger").grid(column=0, row=0)
 ttk.Label(labelFrame, text="Label2").grid(column=0, row=1)
 ttk.Label(labelFrame, text="Label3").grid(column=0, row=2)
