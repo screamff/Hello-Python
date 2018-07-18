@@ -54,31 +54,52 @@ check3.select()
 check3.grid(column=2, row=2, sticky=tk.W)
 
 
-# 单选按钮变量
-COLOR1 = "Blue"
-COLOR2 = "Gold"
-COLOR3 = "Red"
+# # 单选按钮变量
+# COLOR1 = "Blue"
+# COLOR2 = "Gold"
+# COLOR3 = "Red"
+#
+# # 单选按钮回调函数
+# def radCall():
+#     radSel = radVar.get()
+#     if radSel == 1:
+#         win.configure(background=COLOR1)
+#     elif radSel == 2:
+#         win.configure(background=COLOR2)
+#     elif radSel == 3:
+#         win.configure(background=COLOR3)
+#
+# # 创建3个单选按钮
+# radVar = tk.IntVar()
+# rad1 = tk.Radiobutton(win, text=COLOR1, variable=radVar, value=1, command=radCall)
+# rad1.grid(column=0, row=3, sticky=tk.W)
+#
+# rad2 = tk.Radiobutton(win, text=COLOR2, variable=radVar, value=2, command=radCall)
+# rad2.grid(column=1, row=3, sticky=tk.W)
+#
+# rad3 = tk.Radiobutton(win, text=COLOR3, variable=radVar, value=3, command=radCall)
+# rad3.grid(column=2, row=3, sticky=tk.W)
 
-# 单选按钮回调函数
+# 使用列表循环改写单选按钮
+colors = ["Blue", "Gold", "Red"]
+
+# 该函数若定义在下个代码块下面则会报错（未定义）,不清楚为什么
 def radCall():
     radSel = radVar.get()
-    if radSel == 1:
-        win.configure(background=COLOR1)
+    if radSel == 0:
+        win.configure(background=colors[0])
+    elif radSel == 1:
+        win.configure(background=colors[1])
     elif radSel == 2:
-        win.configure(background=COLOR2)
-    elif radSel == 3:
-        win.configure(background=COLOR3)
+        win.configure(background=colors[2])
 
-# 创建3个单选按钮
 radVar = tk.IntVar()
-rad1 = tk.Radiobutton(win, text=COLOR1, variable=radVar, value=1, command=radCall)
-rad1.grid(column=0, row=3, sticky=tk.W)
+radVar.set(99)
+for col in range(3):
+    curRad = "rad" + str(col)
+    curRad = tk.Radiobutton(win, text=colors[col], variable=radVar, value=col, command=radCall)
+    curRad.grid(column=col, row=5, sticky=tk.W)
 
-rad2 = tk.Radiobutton(win, text=COLOR2, variable=radVar, value=2, command=radCall)
-rad2.grid(column=1, row=3, sticky=tk.W)
-
-rad3 = tk.Radiobutton(win, text=COLOR3, variable=radVar, value=3, command=radCall)
-rad3.grid(column=2, row=3, sticky=tk.W)
 
 # 创建滚动文本框，定义长宽
 scrolW = 30
