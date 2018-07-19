@@ -18,9 +18,11 @@ scrollbar.grid(sticky='E')
 lb.selection_anchor(tk.END)
 lb.grid()
 
+lb.insert(0,100)
 def huge_number():
     for i in range(3):
         lb.insert(0, i)
 
+print lb.bbox(0)
 ttk.Button(win, text='start', command=huge_number).grid()
 win.mainloop()
