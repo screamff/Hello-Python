@@ -11,6 +11,7 @@ from Tkinter import Menu
 # 创建主窗口
 win = tk.Tk()
 win.title("Python gui")
+win.iconbitmap(r'c:\Python27\DLLs\pyc.ico')
 
 def _msgBox():
     # mBox.showinfo("python信息提示框", "a python gui created using tkinter:\n The year is 2018")
