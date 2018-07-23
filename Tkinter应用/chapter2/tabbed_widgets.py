@@ -85,11 +85,11 @@ colors = ["Blue", "Gold", "Red"]
 def radCall():
     radSel = radVar.get()
     if radSel == 0:
-        monty2.configure(background=colors[0])
+        monty2.configure(text=colors[0])
     elif radSel == 1:
-        monty2.configure(background=colors[1])
+        monty2.configure(text=colors[1])
     elif radSel == 2:
-        monty2.configure(background=colors[2])
+        monty2.configure(text=colors[2])
 
 radVar = tk.IntVar()
 radVar.set(99)
