@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 # version:python2.7.15
 # windows 10
 # reference: python gui cookbook
@@ -11,9 +11,11 @@ import ScrolledText as scrolledtext
 win = tk.Tk()
 win.title("Python gui")
 
+
 # 按钮回调函数
 def ClickMe():
     action.configure(text="Hello " + name.get() + ' ' + numberChosen.get())
+
 
 # 创建按钮
 action = ttk.Button(win, text="Click Me!", command=ClickMe)
@@ -26,7 +28,7 @@ ttk.Label(win, text="Choose a number:").grid(column=1, row=0)
 # 创建输入框
 name = tk.StringVar()
 nameEntered = ttk.Entry(win, width=12, textvariable=name)
-nameEntered.focus() #place a cursor
+nameEntered.focus()  # place a cursor
 nameEntered.grid(column=0, row=1)
 
 # 创建下拉菜单
@@ -35,9 +37,9 @@ numberChosen = ttk.Combobox(win, width=12, textvariable=number)
 # numberChosen = ttl.Combobox(win, width=12, textvariable=number, state='readonly') # 禁止自己填写
 numberChosen["values"] = [1, 2, 4, 42, 100]
 numberChosen.grid(column=1, row=1)
-numberChosen.current(1) #选择默认value
+numberChosen.current(1)  # 选择默认value
 
-#创建3个checkbutton
+# 创建3个checkbutton
 chVarDis = tk.IntVar()
 check1 = tk.Checkbutton(win, text="Disabled", variable=chVarDis, state="disabled")
 check1.select()
