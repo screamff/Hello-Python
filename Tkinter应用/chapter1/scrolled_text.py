@@ -85,6 +85,7 @@ check3.grid(column=2, row=2, sticky=tk.W)
 # 使用列表循环改写单选按钮
 colors = ["Blue", "Gold", "Red"]
 
+
 # 该函数若定义在下个代码块下面则会报错（未定义）,不清楚为什么
 def radCall():
     radSel = radVar.get()
@@ -94,6 +95,7 @@ def radCall():
         win.configure(background=colors[1])
     elif radSel == 2:
         win.configure(background=colors[2])
+
 
 radVar = tk.IntVar()
 radVar.set(99)

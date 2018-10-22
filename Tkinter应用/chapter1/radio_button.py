@@ -54,6 +54,7 @@ COLOR1 = "Blue"
 COLOR2 = "Gold"
 COLOR3 = "Red"
 
+
 # 按钮回调函数
 def radCall():
     radSel = radVar.get()
@@ -63,6 +64,7 @@ def radCall():
         win.configure(background=COLOR2)
     elif radSel == 3:
         win.configure(background=COLOR3)
+
 
 # 创建3个单选按钮
 radVar = tk.IntVar()
