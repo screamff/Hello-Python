@@ -1,4 +1,5 @@
 # coding:utf-8
+# 有道翻译爬虫
 
 from bs4 import BeautifulSoup
 import requests
