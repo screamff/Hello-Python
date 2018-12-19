@@ -65,6 +65,15 @@ class Ui_MainWindow(object):
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setGeometry(QtCore.QRect(310, 360, 75, 23))
         self.pushButton_4.setObjectName("pushButton_4")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(480, 250, 113, 20))
+        self.lineEdit.setObjectName("lineEdit")
+        self.clear_button = QtWidgets.QPushButton(self.centralwidget)
+        self.clear_button.setGeometry(QtCore.QRect(620, 250, 75, 23))
+        self.clear_button.setObjectName("clear_button")
+        self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_7.setGeometry(QtCore.QRect(620, 290, 75, 23))
+        self.pushButton_7.setObjectName("pushButton_7")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
@@ -80,7 +89,8 @@ class Ui_MainWindow(object):
         self.pushButton_2.clicked.connect(MainWindow.showNormal)
         self.pushButton.clicked.connect(MainWindow.showMinimized)
         self.pushButton_5.clicked.connect(MainWindow.close)
-        self.pushButton_4.clicked.connect(self.changelabel)
+        self.clear_button.clicked.connect(self.lineEdit.clear)
+        self.pushButton_7.clicked.connect(self.print_text)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -99,10 +109,12 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "normal"))
         self.pushButton_3.setText(_translate("MainWindow", "clear"))
         self.pushButton_4.setText(_translate("MainWindow", "测试"))
+        self.lineEdit.setText(_translate("MainWindow", "在此输入"))
+        self.clear_button.setText(_translate("MainWindow", "清空"))
+        self.pushButton_7.setText(_translate("MainWindow", "打印"))
 
-    def changelabel(self):
-        print("按钮测试")
-        self.changetext.setText("我已出仓")
+    def print_text(self):
+        print(self.lineEdit.text())
 
 
 if __name__ == "__main__":

@@ -161,6 +161,45 @@
      <string>测试</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>250</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>在此输入</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clear_button">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>250</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>清空</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>290</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>打印</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -253,6 +292,22 @@
     <hint type="destinationlabel">
      <x>178</x>
      <y>395</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clear_button</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>658</x>
+     <y>286</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>283</y>
     </hint>
    </hints>
   </connection>
