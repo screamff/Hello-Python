@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="picture">
+    <file>09_显示图片.png</file>
+  </qresource>
+</RCC>
