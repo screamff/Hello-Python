@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>搬瓦工库存实时监控 - 搬瓦工VPS专题网</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.bootcss.com/bootstrap-table/1.11.1/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.bootcss.com/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h2 class="inline-block">搬瓦工VPS库存实时监控</h2>
+            <p class="text-center">
+                <strong>
+                    <a href="https://bwhvps.com/198.html" target="_blank"
+                       title="搬瓦工补货通知渠道">搬瓦工补货通知渠道</a> |
+                    <a href="https://jq.qq.com/?_wv=1027&k=5vcCPci" target="_blank"
+                       title="搬瓦工补货交流QQ群">搬瓦工补货交流QQ群：676068439</a> |
+                    <span style="color:red">优惠码：BWH26FXH3HIQ(<a href="https://bwhvps.com/171.html"
+                                                                target="_blank" title="搬瓦工购买教程">购买教程</a>)</span></strong>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="table" data-toolbar="#toolbar" data-search="false" data-show-refresh="false"
+                   data-show-toggle="false" data-show-columns="false" data-show-export="true"
+                   data-detail-view="false" data-detail-formatter="detailFormatter" data-minimum-count-columns="2"
+                   data-show-pagination-switch="false" data-pagination="false" data-id-field="id"
+                   data-page-size="20" data-page-list="[20, 50, 100, ALL]" data-show-footer="false"
+                   data-side-pagination="client" data-filter-control="true"
+                   data-filter-show-clear="false" class="table table-striped table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th style="width: 150px; " data-field="name" tabindex="0">
+                        <div class="th-inner ">方案</div>
+                    </th>
+                    <th style="width: 50px; " data-field="cpu" tabindex="0">
+                        <div class="th-inner ">CPU</div>
+                    </th>
+                    <th style="width: 50px; " data-field="ram" tabindex="0">
+                        <div class="th-inner ">内存</div>
+                    </th>
+                    <th style="width: 50px; " data-field="disk" tabindex="0">
+                        <div class="th-inner ">硬盘</div>
+                    </th>
+                    <th style="width: 50px; " data-field="flow" tabindex="0">
+                        <div class="th-inner ">月流量</div>
+                    </th>
+                    <th style="width: 50px; " data-field="bandwidth" tabindex="0">
+                        <div class="th-inner ">带宽</div>
+                    </th>
+                    <th style="width: 90px; " data-field="yearly" tabindex="0">
+                        <div class="th-inner ">价格/年</div>
+                    </th>
+
+                    <th style="width: 50px; " data-field="stock" tabindex="0">
+                        <div class="th-inner ">库存状态</div>
+                    </th>
+                    <th style="width: 50px; " data-field="9" tabindex="0">
+                        <div class="th-inner ">购买链接</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td style="width: 150px; ">CN2 - 10GB                        </td>
+                        <td style="width: 50px; ">1核</td>
+                        <td style="width: 50px; ">512MB</td>
+                        <td style="width: 50px; ">10GB</td>
+                        <td style="width: 50px; ">500GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$29.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-danger btn-sm">缺货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/198.html"
+                               class="btn btn-danger btn-sm" target="_blank">补货通知</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 - 20GB                        </td>
+                        <td style="width: 50px; ">1核</td>
+                        <td style="width: 50px; ">1024MB</td>
+                        <td style="width: 50px; ">20GB</td>
+                        <td style="width: 50px; ">1000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$49.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/57"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 - 40GB                        </td>
+                        <td style="width: 50px; ">1核</td>
+                        <td style="width: 50px; ">2048MB</td>
+                        <td style="width: 50px; ">40GB</td>
+                        <td style="width: 50px; ">2000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$99.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/58"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 - 80GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">4096MB</td>
+                        <td style="width: 50px; ">80GB</td>
+                        <td style="width: 50px; ">3000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$199.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/59"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 - 160GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">8GB</td>
+                        <td style="width: 50px; ">160GB</td>
+                        <td style="width: 50px; ">5000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$399.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/67"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 - 320GB                        </td>
+                        <td style="width: 50px; ">3核</td>
+                        <td style="width: 50px; ">16GB</td>
+                        <td style="width: 50px; ">320GB</td>
+                        <td style="width: 50px; ">8000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$799.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/68"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">HK - 160GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">8192MB</td>
+                        <td style="width: 50px; ">160GB</td>
+                        <td style="width: 50px; ">500GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$799.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/64"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">HK - 320GB                        </td>
+                        <td style="width: 50px; ">4核</td>
+                        <td style="width: 50px; ">16384MB</td>
+                        <td style="width: 50px; ">320GB</td>
+                        <td style="width: 50px; ">1000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$1599.98</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/65"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">HK - 640GB                        </td>
+                        <td style="width: 50px; ">6核</td>
+                        <td style="width: 50px; ">32768MB</td>
+                        <td style="width: 50px; ">640GB</td>
+                        <td style="width: 50px; ">2000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$3199.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/77"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">HK - 640GB                        </td>
+                        <td style="width: 50px; ">6核</td>
+                        <td style="width: 50px; ">32768MB</td>
+                        <td style="width: 50px; ">640GB</td>
+                        <td style="width: 50px; ">4000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$6459.00</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/78"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">KVM - 20GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">1024MB</td>
+                        <td style="width: 50px; ">20GB</td>
+                        <td style="width: 50px; ">1TB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$49.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/44"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">KVM - 40GB                        </td>
+                        <td style="width: 50px; ">3核</td>
+                        <td style="width: 50px; ">2GB</td>
+                        <td style="width: 50px; ">40GB</td>
+                        <td style="width: 50px; ">2TB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$99.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/45"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">KVM - 80GB                        </td>
+                        <td style="width: 50px; ">4核</td>
+                        <td style="width: 50px; ">4GB</td>
+                        <td style="width: 50px; ">80GB</td>
+                        <td style="width: 50px; ">3TB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$199.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/46"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">KVM - 160GB                        </td>
+                        <td style="width: 50px; ">5核</td>
+                        <td style="width: 50px; ">8GB</td>
+                        <td style="width: 50px; ">160GB</td>
+                        <td style="width: 50px; ">4TB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$399.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/47"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">KVM - 320GB                        </td>
+                        <td style="width: 50px; ">6核</td>
+                        <td style="width: 50px; ">16GB</td>
+                        <td style="width: 50px; ">320GB</td>
+                        <td style="width: 50px; ">5TB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$799.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/48"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 10GB                        </td>
+                        <td style="width: 50px; ">1核</td>
+                        <td style="width: 50px; ">512MB</td>
+                        <td style="width: 50px; ">10GB</td>
+                        <td style="width: 50px; ">300GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$39.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-danger btn-sm">缺货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/198.html"
+                               class="btn btn-danger btn-sm" target="_blank">补货通知</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 20GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">1024MB</td>
+                        <td style="width: 50px; ">20GB</td>
+                        <td style="width: 50px; ">1000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$93.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-danger btn-sm">缺货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/198.html"
+                               class="btn btn-danger btn-sm" target="_blank">补货通知</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 40GB                        </td>
+                        <td style="width: 50px; ">3核</td>
+                        <td style="width: 50px; ">2048MB</td>
+                        <td style="width: 50px; ">40GB</td>
+                        <td style="width: 50px; ">2000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$187.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-danger btn-sm">缺货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/198.html"
+                               class="btn btn-danger btn-sm" target="_blank">补货通知</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 80GB                        </td>
+                        <td style="width: 50px; ">4核</td>
+                        <td style="width: 50px; ">4096MB</td>
+                        <td style="width: 50px; ">80GB</td>
+                        <td style="width: 50px; ">3000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$339.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-danger btn-sm">缺货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/198.html"
+                               class="btn btn-danger btn-sm" target="_blank">补货通知</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 160GB                        </td>
+                        <td style="width: 50px; ">6核</td>
+                        <td style="width: 50px; ">8GB</td>
+                        <td style="width: 50px; ">160GB</td>
+                        <td style="width: 50px; ">5000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$645.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/75"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA - 320GB                        </td>
+                        <td style="width: 50px; ">8核</td>
+                        <td style="width: 50px; ">16GB</td>
+                        <td style="width: 50px; ">320GB</td>
+                        <td style="width: 50px; ">8000GB</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 90px; ">$1199.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/76"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 20GB                        </td>
+                        <td style="width: 50px; ">2核</td>
+                        <td style="width: 50px; ">1GB</td>
+                        <td style="width: 50px; ">20GB</td>
+                        <td style="width: 50px; ">1000GB</td>
+                        <td style="width: 50px; ">2.5GB</td>
+                        <td style="width: 90px; ">$119.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/87"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 40GB                        </td>
+                        <td style="width: 50px; ">3核</td>
+                        <td style="width: 50px; ">2GB</td>
+                        <td style="width: 50px; ">40GB</td>
+                        <td style="width: 50px; ">2000GB</td>
+                        <td style="width: 50px; ">2.5GB</td>
+                        <td style="width: 90px; ">$229.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/88"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 80GB                        </td>
+                        <td style="width: 50px; ">4核</td>
+                        <td style="width: 50px; ">4GB</td>
+                        <td style="width: 50px; ">80GB</td>
+                        <td style="width: 50px; ">3000GB</td>
+                        <td style="width: 50px; ">2.5GB</td>
+                        <td style="width: 90px; ">$459.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/89"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 160GB                        </td>
+                        <td style="width: 50px; ">6核</td>
+                        <td style="width: 50px; ">8GB</td>
+                        <td style="width: 50px; ">160GB</td>
+                        <td style="width: 50px; ">5000GB</td>
+                        <td style="width: 50px; ">5GB</td>
+                        <td style="width: 90px; ">$769.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/90"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 320GB                        </td>
+                        <td style="width: 50px; ">8核</td>
+                        <td style="width: 50px; ">16GB</td>
+                        <td style="width: 50px; ">320GB</td>
+                        <td style="width: 50px; ">8000GB</td>
+                        <td style="width: 50px; ">5GB</td>
+                        <td style="width: 90px; ">$1399.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/91"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 640GB                        </td>
+                        <td style="width: 50px; ">10核</td>
+                        <td style="width: 50px; ">32GB</td>
+                        <td style="width: 50px; ">640GB</td>
+                        <td style="width: 50px; ">10000GB</td>
+                        <td style="width: 50px; ">10GB</td>
+                        <td style="width: 90px; ">$2399.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/92"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                        <tr>
+                        <td style="width: 150px; ">CN2 GIA ECOMMERCE - 1280GB                        </td>
+                        <td style="width: 50px; ">12核</td>
+                        <td style="width: 50px; ">32GB</td>
+                        <td style="width: 50px; ">1280GB</td>
+                        <td style="width: 50px; ">12000GB</td>
+                        <td style="width: 50px; ">10GB</td>
+                        <td style="width: 90px; ">$4699.99</td>
+
+
+                        <td style="width: 50px; ">
+                            <p class="btn btn-success btn-sm">有货</p></td>                        <td style="width: 50px; ">
+                                                            <a href="https://bwhvps.com/go/pid/93"
+                               class="btn btn-primary btn-sm" target="_blank">立即购买</a></td>
+                                                    </tr>
+                                    </tbody>
+            </table>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <br>
+    <p class="text-center">Copyright @ 2019 <a href="https://bwhvps.com/" target="_blank">搬瓦工VPS专题网</a></p></div>
+<style>
+    #table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    #table th {
+        text-align: center;
+    }
+</style>
+<script>
+    $('#table').bootstrapTable({
+        customSort: function (sortName, sortOrder) {
+            var that = this,
+                name = sortName,
+                order = sortOrder === 'desc' ? -1 : 1,
+                index = $.inArray(sortName, this.header.fields);
+            if (index !== -1) {
+                if (this.options.sortStable) {
+                    $.each(this.data,
+                        function (i, row) {
+                            if (!row.hasOwnProperty('_position')) row._position = i;
+                        });
+                }
+                var getItemField = function (item, field, escape) {
+                    var value = item;
+
+                    if (typeof field !== 'string' || item.hasOwnProperty(field)) {
+                        return escape ? escapeHTML(item[field]) : item[field];
+                    }
+                    var props = field.split('.');
+                    for (var p in props) {
+                        value = value && value[props[p]];
+                    }
+                    return escape ? escapeHTML(value) : value;
+                };
+                var calculateObjectValue = function (self, name, args, defaultValue) {
+                    var func = name;
+
+                    if (typeof name === 'string') {
+                        // support obj.func1.func2
+                        var names = name.split('.');
+
+                        if (names.length > 1) {
+                            func = window;
+                            $.each(names,
+                                function (i, f) {
+                                    func = func[f];
+                                });
+                        } else {
+                            func = window[name];
+                        }
+                    }
+                    if (typeof func === 'object') {
+                        return func;
+                    }
+                    if (typeof func === 'function') {
+                        return func.apply(self, args);
+                    }
+                    if (!func && typeof name === 'string' && sprintf.apply(this, [name].concat(args))) {
+                        return sprintf.apply(this, [name].concat(args));
+                    }
+                    return defaultValue;
+                };
+                this.data.sort(function (a, b) {
+
+                    if (that.header.sortNames[index]) {
+                        name = that.header.sortNames[index];
+                    }
+                    var aa = getItemField(a, name, that.options.escape),
+                        bb = getItemField(b, name, that.options.escape),
+                        value = calculateObjectValue(that.header, that.header.sorters[index], [aa, bb]);
+
+                    if (value !== undefined) {
+                        return order * value;
+                    }
+
+                    // Fix #161: undefined or null string sort bug.
+                    if (aa === undefined || aa === null) {
+                        aa = '';
+                    }
+                    if (bb === undefined || bb === null) {
+                        bb = '';
+                    }
+
+                    if (that.options.sortStable && aa === bb) {
+                        aa = a._position;
+                        bb = b._position;
+                    }
+
+                    // IF both values are numeric, do a numeric comparison
+                    if ($.isNumeric(aa) && $.isNumeric(bb) || $.inArray(name, ["flow", "bandwidth", "disk"]) >= 0) {
+                        // Convert numerical values form string to float.
+                        aa = parseFloat(aa);
+                        bb = parseFloat(bb);
+                        if (aa < bb) {
+                            return order * -1;
+                        }
+                        return order;
+                    }
+
+                    if (aa === bb) {
+                        return 0;
+                    }
+
+                    // If value is not a string, convert to string
+                    if (typeof aa !== 'string') {
+                        aa = aa.toString();
+                    }
+
+                    if (aa.localeCompare(bb) === -1) {
+                        return order * -1;
+                    }
+
+                    return order;
+                });
+            }
+            return;
+        }
+    });
+
+    $(document).ready(function () {
+        $("#table th").each(function () {
+            if ($(this).find(".fht-cell select").length > 0) {
+                $width = $(this).width();
+                $(this).find(".fht-cell select option").eq(0).html($(this).find(".th-inner").html());
+                $(this).find(".th-inner").remove();
+                $(this).css({
+                    verticalAlign: "top",
+                    paddingTop: "8px"
+                });
+                //$(this).find("select").width($width);
+            }
+            if ($(this).find(".fht-cell input").length > 0) {
+                $width = $(this).width();
+                $(this).find(".fht-cell input").attr("placeholder", $(this).find(".th-inner").html());
+                $(this).find(".th-inner").remove();
+                $(this).css({
+                    verticalAlign: "top",
+                    paddingTop: "8px"
+                });
+                //$(this).find("input").width($width);
+            }
+            if ($(this).find(".fht-cell>div").length > 0 && $(this).find(".fht-cell>div").html() == "") {
+                $(this).find(".fht-cell").remove();
+            }
+        });
+    });</script>
+</body>
+
+</html>
