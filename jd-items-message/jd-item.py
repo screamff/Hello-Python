@@ -26,6 +26,6 @@ selected_attr = selected_attr['data-value']
 
 
 if __name__ == "__main__":
-    print "物品名称：%s".decode("utf-8") % item_name.string.strip()
-    print "物品价格：%s".decode("utf-8") % item_price
-    print "物品规格：%s".decode("utf-8") % selected_attr
+    print("物品名称：%s" % item_name.string.strip())
+    print("物品价格：%s" % item_price)
+    print("物品规格：%s" % selected_attr)
